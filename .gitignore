@@ -136,3 +136,9 @@ dmypy.json
 
 #Mac OSX
 .DS_Store
+
+#Credentials
+credentials.py
+
+#Notes
+notes/
