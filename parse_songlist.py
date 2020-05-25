@@ -6,6 +6,7 @@ class Songlist:
 
     def __init__(self, path):
         self.path = path
+        self.query = []
         return
 
     def get_contents(self):
@@ -15,7 +16,10 @@ class Songlist:
         return contents
 
     def format_contents(self):
-        pattern = re.compile()
-
-
+        for q in self.get_contents():
+            pattern = re.compile("^(\(*-*[\d:removed]*\)*)(\s\d+\.)*")
+            mo = re.match(pattern, q).group()
+            if mo:
+                q = q.replace(mo, '')
+                print(q)
         return
