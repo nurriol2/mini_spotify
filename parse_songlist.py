@@ -6,7 +6,7 @@ class Songlist:
 
     def __init__(self, path):
         self.path = path
-        self.query = []
+        self.querylist = []
         return
 
     def get_contents(self):
@@ -21,5 +21,10 @@ class Songlist:
             mo = re.match(pattern, q).group()
             if mo:
                 q = q.replace(mo, '')
-                print(q)
+                self.querylist.append(q)
         return
+
+    def get_querylist(self):
+        self.get_contents()
+        self.format_contents()
+        return self.querylist
