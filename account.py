@@ -6,7 +6,6 @@ import spotipy.util as util
 from credentials import Credentials
 from spotipy.oauth2 import SpotifyClientCredentials
 
-
 class SpotifyAccount:
 
     def __init__(self):
@@ -22,12 +21,14 @@ class SpotifyAccount:
         return
 
     def get_track_id(self, q):
+        result = []
         try:
             results = self.spotify.search(q=q, limit = 10, type="track")
             trackid = results["tracks"]["items"][0]["id"]
+            result.append(trackid)
         except:
-            trackid = "7Dju1FHuCiOlOkIXyNYKOU" #calentamiento global
-        return [trackid]
+            sys.exit("Could not locate ID for track "+q+"\nClosing program")
+        return result
 
     def get_playlist_id(self, playlist):
         playlistid = ''
