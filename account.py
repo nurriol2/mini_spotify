@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import sys
 import spotipy
 import spotipy.util as util
 from credentials import Credentials
@@ -21,14 +20,19 @@ class SpotifyAccount:
         return
 
     def get_track_id(self, q):
-        result = []
         try:
             results = self.spotify.search(q=q, limit = 10, type="track")
             trackid = results["tracks"]["items"][0]["id"]
-            result.append(trackid)
         except:
-            sys.exit("Could not locate ID for track "+q+"\nClosing program")
-        return result
+            print("Cannot find trackID for "+q+"\nAdding silent track instead")
+            #tracks that cannot be found are replaced with a silent track
+
+            #static
+            #trackid = "0o12mLSQuXFgsh4e2Kc4e5"
+
+            #pure silence
+            trackid = "5XSKC4d0y0DfcGbvDOiL93"
+        return [trackid]
 
     def get_playlist_id(self, playlist):
         playlistid = ''
