@@ -7,17 +7,20 @@ from parse_songlist import Songlist
 
 def main():
 
-    #song = "one in a million dance gavin dance"
-    #song = "88834738951135633371"
+    song = "one in a million dance gavin dance"
+    song = "88834738951135633371"
     myAcc = SpotifyAccount()
     #r = myAcc.get_track_id(song)
     #print(r)
     myAcc.create_playlist("test1")
 
-    mySonglist = Songlist("/Users/nikourriola/Desktop/projects/mini_spotify/smallsonglist.txt").get_querylist()
-
-    for song in mySonglist:
+    foo = ["one in a million dance gavin dance", "88834738951135633371", "one in a million dance gavin dance"]
+    for song in foo:
         myAcc.add_tracks_to("test1", song)
+    #mySonglist = Songlist("/Users/nikourriola/Desktop/projects/mini_spotify/smallsonglist.txt").get_querylist()
+
+    #for song in mySonglist:
+    #    myAcc.add_tracks_to("test1", song)
 
     #myAcc.create_playlist("test0")
     #myAcc.add_tracks_to("test0", song)
